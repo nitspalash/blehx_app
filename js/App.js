@@ -19,6 +19,8 @@ import Checkout from "./components/sale/checkout";
 import Emaillogin from "./components/signup/emaillogin";
 import Profile from "./components/profile"; 
 import EditProfile from "./components/profile/edit-profile";
+import OrderDetails from "./components/profile/order-details";
+import OrderFullDetails from "./components/profile/order-fulldetails";
 
 //import ChangePassword from "./components/profile/change-password";
 
@@ -112,6 +114,10 @@ const AppNavigator = StackNavigator(
         Emaillogin:{screen:Emaillogin},
         Profile: { screen: Profile },
         EditProfile: { screen: EditProfile },
+        OrderDetails: { screen: OrderDetails },
+        OrderFullDetails: { screen: OrderFullDetails },
+        
+        
         //ChangePassword: { screen: ChangePassword },
 
 

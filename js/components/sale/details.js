@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import { Image, View, StatusBar, TouchableOpacity } from "react-native";
-import { Container,Footer, Header,ListView, Title, Button, Icon, Tabs, Tab, Right, Left, Body, Content ,Text ,ImageHeader} from 'native-base';
+import { Container,Footer,Spinner, Header,ListView, Title, Button, Icon, Tabs, Tab, Right, Left, Body, Content ,Text ,ImageHeader} from 'native-base';
 import ImageSlider from 'react-native-image-slider';
 //import { Button1 } from 'react-native-elements'
 import styles from "./styles";
 import Icon2 from 'react-native-vector-icons/FontAwesome';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {productdetail} from '../../actions/productdetailsActions';
 
 
 
-
-export default class Details extends Component {
+class Details extends Component {
   // eslint-disable-line
   constructor(props) {super(props)
 		this.state = {
       visible: false,
-      product_details:''
+      productdetails:'',
+      product_id:'',
+      
 		}
 	  
     
@@ -24,19 +28,62 @@ export default class Details extends Component {
    
     
   componentWillMount(){ 
-  
+    this.go_cart=this.go_cart.bind(this);
     const navigate = this.props.navigation;
-    //alert(JSON.stringify(this.props.navigation))
+    //alert(this.props.navigation.state.params)
     //alert(this.props.navigation.state.params.id);
    // this.setState({product_details:this.props.navigation.state.params.id})
     //alert('here')
     this.incrementFunc=this.incrementFunc.bind(this);
-   }
+   
+   this.props.productdetail(this.props.navigation.state.params).then(res=>{
+
+     this.setState({visible:false});
+   
+   })
+  
+  }
+
+  
    incrementFunc(){
 
-    alert("here");
+    //alert("here");
+  }
+  go_cart(){
+    //alert(this.product_id)
+    this.props.navigation.navigate("Cart",this.product_id)
   }
   render() {
+    let detailsval= '';
+    if(this.props.productdetails.data)
+    {  
+      this.product_id = this.props.productdetails.data.id;
+      detailsval = (
+        <View>
+  <View style={{flex: 1, flexDirection: 'row',marginTop:20}}>
+          <View  style={styles.content1}>
+          <Text style={styles.content1text}> {this.props.productdetails.data.name}</Text>
+          </View>
+          <View style={styles.content1} >
+          <Text style={styles.content2text}>{this.props.productdetails.data.price} USD</Text>			
+        </View>
+        </View>
+        <View style={{flex: 1, flexDirection: 'row',marginTop:20}}>
+          <View style={{flex: 1,flexDirection: 'column',marginLeft:20}}>
+                <Text style={{fontSize:15,color:'gray'}}>Shipping  :  20-30 Nov    Weight  : 5.5Kg</Text>
+                <Text style={{fontSize:15,color:'gray'}}>Quantity  :     </Text> 
+               
+        </View>
+        </View>
+       </View>
+     );
+    }
+    else{
+       detailsval = (
+        <Spinner />
+        );
+    }
+
     const banner = require("../../../img/product-1.png");
     // eslint-disable-line
     return (
@@ -54,54 +101,17 @@ export default class Details extends Component {
           <Right />
         </Header>
       <Content style={styles.container}>
-      
-        <View>
+      <View>
 
-        <ImageSlider images={[
-        banner,
-        banner,
-        banner
-    ]}/>
-    <View style={{flex: 1, flexDirection: 'row',marginTop:20}}>
-						<View  style={styles.content1}>
-						<Text style={styles.content1text}> sadsad 45</Text>
-						</View>
-						<View style={styles.content1} >
-            <Text style={styles.content2text}>345 USD</Text>			
-					</View>
-          </View>
-          <View style={{flex: 1, flexDirection: 'row',marginTop:20}}>
-						<View style={{flex: 1,flexDirection: 'column',marginLeft:20}}>
-									<Text style={{fontSize:15,color:'gray'}}>Shipping  :  20-30 Nov    Weight  : 5.5Kg</Text>
-                  <Text style={{fontSize:15,color:'gray'}}>Quantity  :     </Text> 
-                 
-					</View>
-          </View>
-         
-        </View>
+      <ImageSlider images={[
+      banner,
+      banner,
+      banner
+  ]}/>
+      {detailsval}
+      </View>
         <View>
-        {/* <TabNavigator style={{flex: 1,marginTop:80}}>
-  <TabNavigator.Item
-    title="Notes"
-    onPress={() => this.setState({ selectedTab: 'home' })}>
-    <Text>Tab1</Text>
-  </TabNavigator.Item>
-  <TabNavigator.Item
-    title="Payment"
-    onPress={() => this.setState({ selectedTab: 'home' })}>
-    <Text>Tab2</Text>
-  </TabNavigator.Item>
-  <TabNavigator.Item
-    title="Warranty"
-    onPress={() => this.setState({ selectedTab: 'home' })}>
-    <Text>Tab3</Text>
-  </TabNavigator.Item>
-  <TabNavigator.Item
-    title="Discount"
-    onPress={() => this.setState({ selectedTab: 'home' })}>
-    <Text>Tab4</Text>
-  </TabNavigator.Item>
-</TabNavigator> */}
+       
  <Tabs style={{flex: 1,marginTop:30}}>
               <Tab heading="Notes" >
               <View title="NATIVE" style={styles.content}>
@@ -150,8 +160,8 @@ export default class Details extends Component {
                        </View>
                     
 <View style={{flex: 0.5,alignItems: 'center'}}>
-                    <Button  style={{flex: 0.5,backgroundColor:'#ffb345'}} onPress={()=>this.props.navigation.navigate("Cart")}>
-                    <Text style={{flex: 1,color:'#ede9d5',fontSize:20}}>Add To Cart</Text> 
+                    <Button  style={{flex: 0.5,backgroundColor:'#ffb345'}} onPress={()=>this.go_cart()}>
+                    <Text style={{flex: 1,color:'#ede9d5',fontSize:20}}>Add To Cart </Text> 
                     </Button>
                     </View>
             </View>
@@ -161,3 +171,25 @@ export default class Details extends Component {
   }
 }
 //export default Details;
+//export default Sale;
+Details.propTypes = {
+	auth : PropTypes.object.isRequired,
+	productdetail:PropTypes.func.isRequired,
+  productdetails : PropTypes.object.isRequired,
+  }
+  const mapStateToProps = (state)=>{ //alert(JSON.stringify(state));
+	  return {
+      auth:state.auth,
+      productdetails:state.productdetails.data,
+    }
+   // alert(JSON.stringify(product))
+  }
+  
+  const mapDispatchToProps = (dispatch)=>{
+	  return {
+      productdetail:(id)=>dispatch(productdetail(id)),
+	  
+	  }
+  }
+  
+  export default connect(mapStateToProps,mapDispatchToProps)(Details);

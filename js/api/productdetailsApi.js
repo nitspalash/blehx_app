@@ -1,10 +1,7 @@
 import api from './index'
-class productApi {
+class productdetailsApi {
 
-	//login API call
-	static productlist(id){  
-    return api.post('product',{cat_id:id}).then(responseJson=>responseJson).catch(err=>err)
-	}
+	
 	static productdetails(id){  
 		return api.post('productDetails',{product_id:id}).then(responseJson=>responseJson).catch(err=>err)
 		}
@@ -16,4 +13,4 @@ class productApi {
 
 }
 
-export default productApi
+export default productdetailsApi

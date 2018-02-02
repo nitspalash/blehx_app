@@ -12,7 +12,7 @@ class authApi {
     return api.post('signup',{full_name:name,email:email,password:password,id:id,type:type}).then(responseJson=>responseJson).catch(err=>err)
 	}
 	static login(email,password){
-		return api.post('users/token.json',{email:email,password:password}).then(responseJson=>responseJson).catch(err=>err)
+		return api.post('login',{email:email,password:password}).then(responseJson=>responseJson).catch(err=>err)
 		}
 	static editProfile(userData){
     return api.post('editUser',userData).then(responseJson=>responseJson).catch(err=>err)

@@ -81,7 +81,19 @@ export default {
     backgroundColor:'#ffb345'
    },
    iStyle : {
-   }
-  
+   },
+   modalContainer: {
+    flex: 1,
+    //justifyContent: 'center',
+    //backgroundColor: 'grey',
+  },
+  innerContainer: {
+    alignItems: 'center',
+  },
+  mb18:{
+    justifyContent:'center', 
+    alignItems: 'center',  
+    backgroundColor: "#ffb248"
+  }
  
 };

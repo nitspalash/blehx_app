@@ -94,7 +94,7 @@ android {
     buildToolsVersion "26.0.1"
 
     defaultConfig {
-        applicationId "com.nativebasekitchensink"
+        applicationId "com.nativebaseBlehx"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1

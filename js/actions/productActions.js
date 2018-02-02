@@ -23,16 +23,16 @@ import {AsyncStorage} from 'react-native'
 // }
 
 
-export function productlist(id){ 
+export function productlist(id){ //alert(id)
  
   return function(dispatch){
     dispatch(productFetchBusy())
     
       return productApi.productlist(id).then(res=>{
-        
+        //alert(JSON.stringify(res))
          if(typeof res === 'object'){ //alert(JSON.stringify(res));
           // console.log(res)
-           if(res && res.productlist){
+           if(res && res.status == 'success'){
              //alert(res.ack)
              dispatch(productFetchSuccess(res))
            }else{
@@ -48,12 +48,37 @@ export function productlist(id){
   }
 }
 
+export function productdetails(id){ //alert(id)
+ 
+  // return function(dispatch){
+  //   dispatch(productFetchBusy())
+    
+  //     return productApi.productdetails(id).then(res=>{
+  //       //alert(JSON.stringify(res))
+  //        if(typeof res === 'object'){ //alert(JSON.stringify(res));
+  //         // console.log(res)
+  //          if(res && res.status == 'success'){
+  //            //alert(res.ack)
+  //            dispatch(productFetchSuccess(res))
+  //          }else{
+  //            dispatch(productFetchFailed())
+  //          }
+  //        }
+  //      }).catch(err=>{
+  //        dispatch(productFetchFailed())
+  //      })
+    
+    
 
-export function productlist_bycategory(id){ 
+  // }
+}
+
+
+export function productlist_bycategory(id){ //alert('here');
   return function(dispatch){
     dispatch(productFetchBusy())
     return productApi.prodproductlist_bycateuctlist_bycate(id).then(res=>{
-     //alert(JSON.stringify(res.productlist));
+     //alert(JSON.stringify(res));
       if(typeof res === 'object'){
        // console.log(res)
         if(res && res.productlist){
@@ -121,4 +146,6 @@ export function productFetchFailed(){
     type : TYPES.PRODUCTS_FETCH_FAILED
   }
 }
+
+
 

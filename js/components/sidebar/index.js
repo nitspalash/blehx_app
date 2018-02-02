@@ -202,6 +202,12 @@ const datas = [
 		bg: "#C5F442",
 	},
 	{
+		name: "Order Details",
+		route: "OrderDetails",
+		icon: "phone-portrait",
+		bg: "#DA4437",		
+	},
+	{
 		name: "Payment History",
 		route: "Header",
 		icon: "phone-portrait",
@@ -213,6 +219,7 @@ const datas = [
 		icon: "phone-portrait",
 		bg: "#DA4437",		
 	},
+	
 ];
 
 

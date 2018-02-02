@@ -48,25 +48,28 @@ class Emaillogin extends Component {
       Alert.alert('Please enter password');
       return false;
     } 
-    //alert(this.props.navigation.state.params.id);
-    const email = this.state.email;
-    const password = this.state.password;
-    
-    this.props.login(email,password).then(res=>{ 
-      this.setState({
-        visible: !this.state.visible
-      });
-      //alert(res.ack);
-     
-      if(res.ack!==1){
-        //Alert.alert('not');
-        
-      }else{ 
+    else{ 
+      const email = this.state.email;
+      const password = this.state.password;
+      
+      this.props.login(email,password).then(res=>{ alert(JSON.encode(res))
+        this.setState({
+          visible: !this.state.visible
+        });
+        //alert(res.ack);
+       
+        if(res.status!= 'succcess'){
+          Alert.alert('not');
+          
+        }else{ 
         this.props.navigation.navigate("Drawer");
-        
-        
-      }
-    })
+          
+          
+        }
+      })
+    }
+    //alert(this.props.navigation.state.params.id);
+   
     }
   render() {
     return (

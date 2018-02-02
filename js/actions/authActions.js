@@ -62,17 +62,17 @@ export function login(email,password){
   return function(dispatch){
     dispatch(authStateBusy())
     return authApi.login(email,password).then(res=>{
-      //alert(JSON.stringify(res));
-      if(res.ack!= '1'){
+      //alert(JSON.stringify(res.data));
+      if(res.status != 'success'){
         dispatch(authStateFailed())
-      }else{
-        AsyncStorage.setItem('userData',JSON.stringify(res.details),(err,result)=>{
-          AsyncStorage.getItem('userData',(err,result)=>{
-            //alert(JSON.stringify(result))
-          })
+      }else{ 
+        AsyncStorage.setItem('userData',JSON.stringify(res.data),(err,result)=>{
+
         })
+        //return res;
         dispatch(authStateSuccess(res.data))
       }
+      JSON.stringify(res.data)
       return res
     }).catch(err=>err)
   }

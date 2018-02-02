@@ -64,7 +64,7 @@ class Login extends Component {
     const password = this.state.password;
     const type = this.state.type;
     //alert(type);
-    this.props.signup(id,full_name,email,password,type).then(res=>{ alert(JSON.stringify(res))
+    this.props.signup(id,full_name,email,password,type).then(res=>{ //alert(JSON.stringify(res))
       this.setState({
         visible: !this.state.visible
       });

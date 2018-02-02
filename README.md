@@ -1,10 +1,10 @@
-# NativeBase KitchenSink v2.2.1
+# NativeBase Blehx v2.2.1
 An example app with all the UI components of NativeBase
 
-> **NativeBase-KitchenSink** comes in three forms of app for you!
->1. Pure React Native App with `react-navigation` on branch **[master](https://github.com/GeekyAnts/NativeBase-KitchenSink)**
->2. Pure React Native App with `RNRF` on branch **[RNRF](https://github.com/GeekyAnts/NativeBase-KitchenSink/tree/RNRF)**
->3. An Expo app with `CRNA` and `react-navigation` on branch **[CRNA](https://github.com/GeekyAnts/NativeBase-KitchenSink/tree/CRNA)**
+> **NativeBase-Blehx** comes in three forms of app for you!
+>1. Pure React Native App with `react-navigation` on branch **[master](https://github.com/GeekyAnts/NativeBase-Blehx)**
+>2. Pure React Native App with `RNRF` on branch **[RNRF](https://github.com/GeekyAnts/NativeBase-Blehx/tree/RNRF)**
+>3. An Expo app with `CRNA` and `react-navigation` on branch **[CRNA](https://github.com/GeekyAnts/NativeBase-Blehx/tree/CRNA)**
 
 >Find the installation guide in `ReadMe` of appropriate branches
 
@@ -29,9 +29,9 @@ The applications stack of components is built using native UI components, so the
 On the command prompt run the following commands
 
 ```sh
-$ git clone git@github.com:GeekyAnts/NativeBase-KitchenSink.git
+$ git clone git@github.com:GeekyAnts/NativeBase-Blehx.git
 
-$ cd NativeBase-KitchenSink/
+$ cd NativeBase-Blehx/
 
 $ npm install
 
@@ -42,7 +42,7 @@ $ react-native link
 
 **Method One**
 
-*	Open the project in Xcode from **ios/NativebaseKitchenSink.xcodeproj**.
+*	Open the project in Xcode from **ios/NativebaseBlehx.xcodeproj**.
 
 *	Hit the play button.
 
@@ -68,7 +68,7 @@ $ react-native run-android
 
 * Get a quick look of the NativeBase components using <a href="https://getexponent.com/">Exponent</a>
 
-*  Link https://exp.host/@geekyants/nativebasekitchensink
+*  Link https://exp.host/@geekyants/nativebaseBlehx
 
 ## Quick Links to NativeBase
 
