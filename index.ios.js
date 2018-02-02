@@ -10,4 +10,4 @@ const ReduxApp = () =>(
     <App/>
   </Provider>
 )
-AppRegistry.registerComponent('NativebaseKitchenSink', () => ReduxApp);
+AppRegistry.registerComponent('Nativebaseblehx', () => ReduxApp);
